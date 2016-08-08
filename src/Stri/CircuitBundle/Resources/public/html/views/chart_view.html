@@ -1,0 +1,6 @@
+<md-whiteframe>
+    <h3>Element {{ element.title }}</h3>
+    <div class="view-body" layout="row">
+        <chart flex="50" ng-repeat="(property, option) in options" options="option" property="property"></chart>
+    </div>
+</md-whiteframe>

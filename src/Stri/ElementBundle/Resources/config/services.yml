@@ -1,0 +1,5 @@
+services:
+    stri.element.algorithm.js_generator:
+        class: Stri\ElementBundle\Component\Algorithm\JSAlgorithmGenerator
+        arguments:
+            - @templating

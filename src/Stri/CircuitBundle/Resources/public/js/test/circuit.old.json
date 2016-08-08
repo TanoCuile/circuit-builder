@@ -1,0 +1,62 @@
+[
+    {
+        "stage": {
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "data": {
+                "a": 10,
+                "b": 230
+            },
+            "viewOptions": {
+                "label": {
+                    "title": "K",
+                    "position": {
+                        "x": 15,
+                        "y": 18
+                    }
+                }
+            },
+            "model": {
+
+            }
+        },
+        "parameters": {
+            "p": 10,
+            "v": 15
+        },
+        "elementType": "test",
+        "currentView": "defaultView"
+    },
+    {
+        "stage": {
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "data": {
+                "a": 10,
+                "b": 230
+            },
+            "viewOptions": {
+                "label": {
+                    "title": "K",
+                    "position": {
+                        "x": 15,
+                        "y": 18
+                    }
+                }
+            },
+            "model": {
+
+            }
+        },
+        "parameters": {
+            "p": 10,
+            "v": 15
+        },
+        "elementType": "test",
+        "currentView": "defaultView"
+    }
+]

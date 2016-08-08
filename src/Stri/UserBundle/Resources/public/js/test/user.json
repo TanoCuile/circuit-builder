@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "name": "Master",
+    "role": "student",
+    "group": {
+        "id": 1,
+        "name": "AV-51"
+    }
+}

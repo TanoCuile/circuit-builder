@@ -1,0 +1,12 @@
+<div class="form-group schema-form-submit {{form.htmlClass}}">
+    <input type="submit" md-button
+           class="{{ form.style || 'md-primary' }} {{form.fieldHtmlClass}} md-raised md-default-theme"
+           value="{{form.title}}" ng-disabled="form.readonly"
+           ng-if="form.type === 'submit'">
+    <button md-button class="{{ form.style || 'md-primary' }} md-raised md-default-theme" type="button" ng-click="buttonClick($event,form)"
+            ng-disabled="form.readonly" ng-if="form.type !== 'submit'">
+        <span ng-if="form.icon"
+              class="{{form.icon}}"></span>
+        {{form.title}}
+    </button>
+</div>

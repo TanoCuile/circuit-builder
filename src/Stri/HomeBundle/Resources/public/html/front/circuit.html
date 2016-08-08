@@ -1,0 +1,53 @@
+<div class="circuit" ng-controller="CircuitController" flex>
+    <div class="controllbar">
+        <a href="#" md-button="">
+            <i class="glyphicon glyphicon-hand-up"></i>
+            Move
+        </a>
+        <a href="#" md-button="">
+            <i class="glyphicon glyphicon-unchecked"></i>
+            Select
+        </a>
+        <a href="#" md-button="" ng-click="showElementsPanel()"
+           ng-class="{'md-primary': !elementTypesShow, 'md-warn': elementTypesShow}" class="md-raised">
+            <i class="glyphicon glyphicon-wrench"></i>
+            Elements
+        </a>
+        <a href="#" md-button="" ng-click="emulationToggle(circuit)" class="md-raised md-primary" ng-if="!emulation">
+            <i class="glyphicon glyphicon-play"></i>
+            Start
+        </a>
+        <a href="#" md-button="" ng-click="emulationToggle(circuit)"
+           class="md-raised md-warn" ng-if="emulation">
+            <i class="glyphicon glyphicon-stop"></i>
+            Stop
+        </a>
+        <a href="#" md-button="" ng-click="saveCircuit()" class="md-raised">
+            <i class="glyphicon glyphicon-save"></i>
+            Save
+        </a>
+        <a href="#" md-button="" ng-click="configureCircuit()" class="md-raised">
+            <i class="glyphicon glyphicon-save"></i>
+            Properties
+        </a>
+    </div>
+    <div flex ng-controller="ElementTypesController" style="height: 130px;" ng-if="elementTypesShow">
+        <div ng-repeat="type in types" ng-drag="true" ng-drag-data="type">
+            <img ng-src="{{ type.view('defaultView').image() }}"
+                 width="{{ type.view('defaultView').width() }}" height="{{ type.view('defaultView').height() }}"/>
+        </div>
+    </div>
+    <circuit style="background: url('/bundles/home/img/circuit_grid.png') repeat; border: solid 1px #999;"
+             height="400px" width="100%" ng-if="circuit" circuit="circuit" ng-drop="true" ng-if="!emulation"
+             ng-drop-success="addElement($data,$event)">
+    </circuit>
+    <!--<div class="views" layout="row" ng-if="circuit.views().length > 0">-->
+        <!--<md-whiteframe class="view" ng-repeat="viewObj in circuit.views()" flex="25">-->
+            <!--<binary-view view="viewObj" ng-if="viewObj.type() == 'binary'"></binary-view>-->
+        <!--</md-whiteframe>-->
+    <!--</div>-->
+    <div class="views">
+        <chart-view views="circuit.views()"></chart-view>
+    </div>
+    <table-view views="circuit.views()"></table-view>
+</div>

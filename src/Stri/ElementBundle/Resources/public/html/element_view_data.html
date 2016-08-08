@@ -1,0 +1,41 @@
+<md-dialog aria-label="Element view data configuration">
+    <md-dialog-content class="sticky-container">
+        <md-subheader class="md-sticky-no-effect">View data {{ element.title() }}</md-subheader>
+        <md-input-container>
+            <label>Article code</label>
+            <input  type="text" placeholder="223232wshejd"
+                    class="md-input" ng-model="element.articleCode" ng-model-options="{getterSetter:true}">
+        </md-input-container>
+        <md-input-container>
+            <label>Title</label>
+            <input  type="text" placeholder="CRU22323"
+                    class="md-input" ng-model="element.title" ng-model-options="{getterSetter:true}">
+        </md-input-container>
+        <md-input-container>
+            <label>Size</label>
+            <input  type="text"
+                    class="md-input" ng-model="element.size" ng-model-options="{getterSetter:true}">
+        </md-input-container>
+        <md-input-container>
+            <label>Weight</label>
+            <input  type="text"
+                    class="md-input" ng-model="element.weight" ng-model-options="{getterSetter:true}">
+        </md-input-container>
+        <md-input-container>
+            <label>Manufacturer</label>
+            <input  type="text"
+                    class="md-input" ng-model="element.manufacturer" ng-model-options="{getterSetter:true}">
+        </md-input-container>
+        <md-input-container>
+            <label>Type</label>
+            <input  type="text"
+                    class="md-input" ng-model="element.type" ng-model-options="{getterSetter:true}">
+        </md-input-container>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="save(element)" class="md-primary">
+            Save
+        </md-button>
+    </div>
+</md-dialog>

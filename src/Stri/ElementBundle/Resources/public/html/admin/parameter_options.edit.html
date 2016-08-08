@@ -1,0 +1,36 @@
+<md-dialog>
+    <md-dialog-content>
+        <md-subheader class="md-sticky-no-effect">Parameter "{{ parameter.label }}" options list</md-subheader>
+        <div layout="row" ng-repeat="opt in options">
+            <md-input-container flex>
+                <label>
+                    Key
+                </label>
+                <input type="text" ng-model="opt.key" />
+            </md-input-container>
+            <md-input-container flex>
+                <label>
+                    Label
+                </label>
+                <input type="text" ng-model="opt.label" />
+            </md-input-container>
+            <div flex="5">
+                <a href="#" ng-click="addOption()" class="md-warn">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </a>
+            </div>
+        </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="addOption()" class="md-primary">
+            Add
+        </md-button>
+        <md-button ng-click="hide()" class="md-warn">
+            Cancel
+        </md-button>
+        <md-button ng-click="save(parameter)" class="md-primary">
+            Save
+        </md-button>
+    </div>
+</md-dialog>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+    <g>
+        <path
+                style="color:#000000;fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+                d="m 4,27 5.71428,0 0,-25.64286 -5.71428,0 z"
+                id="path4903"
+                inkscape:connector-curvature="0"
+                sodipodi:nodetypes="ccccc"/>
+        <path
+                style="color:#000000;fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+                d="m 58,16 0,11.81642 -61.25,0 0,-28.03571 61.25,0 0,11.79987"
+                id="path4905"
+                inkscape:connector-curvature="0"
+                sodipodi:nodetypes="cccccc"/>
+        <path
+                style="color:#000000;fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+                d="m 74,11 -64.10714,0 0,4.46429 64.10714,0"
+                id="path4907"
+                inkscape:connector-curvature="0"
+                sodipodi:nodetypes="cccc"/>
+        <path
+                sodipodi:nodetypes="cc"
+                style="color:#000000;fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+                d="m 0,28 0,5"
+                id="path4909"
+                inkscape:connector-curvature="0"/>
+        <path
+                sodipodi:nodetypes="cccc"
+                inkscape:connector-curvature="0"
+                id="path4927"
+                d="m 56,28 0,5"
+                style="color:#000000;fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+    </g>
+</svg>

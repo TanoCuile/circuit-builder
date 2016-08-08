@@ -1,0 +1,33 @@
+<md-dialog aria-label="Parameter configuration">
+    <md-dialog-content class="sticky-container">
+        <md-subheader class="md-sticky-no-effect">Configure circuit {{ circuit.name() }}</md-subheader>
+        <md-input-container>
+            <label>Name</label>
+            <input  type="text" placeholder=""
+                    class="md-input" ng-model="circuit.name" ng-model-options="{ getterSetter: true }">
+        </md-input-container>
+        <md-input-container>
+            <label>Description:</label>
+            <textarea ng-model="circuit.description" ng-model-options="{ getterSetter: true }"></textarea>
+        </md-input-container>
+        <md-input-container>
+            <md-select placeholder="Circuit type"
+                       ng-model="circuit.circuitType" ng-model-options="{ getterSetter: true }">
+                <md-option value="{{ type.id() }}" ng-repeat="type in types">{{ type.name() }}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <md-select placeholder="Access"
+                       ng-model="circuit.access" ng-model-options="{ getterSetter: true }">
+                <md-option value="{{ type.value }}" ng-repeat="type in accessTypes">{{ type.label }}</md-option>
+            </md-select>
+        </md-input-container>
+
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="save(circuit)" class="md-primary">
+            Save
+        </md-button>
+    </div>
+</md-dialog>

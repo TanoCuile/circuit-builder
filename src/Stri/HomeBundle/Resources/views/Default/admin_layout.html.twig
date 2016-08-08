@@ -1,0 +1,22 @@
+{% extends "HomeBundle:Default:layout.html.twig" %}
+
+{% block html_attributes %}ng-app="admin"{% endblock %}
+{% block side_column %}
+    <div ng-controller="AdminLeftSidebarController">
+        <main-menu list="list"></main-menu>
+    </div>
+{% endblock %}
+{% block body %}
+    ADMIN LAYOUT
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/uploader/angular-file-upload.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/home/lib/codemirror/js.codemirror-compressed.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/form/ui-codemirror.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/element/js/app/element_type.admin.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/home/js/admin.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/codemirror/codemirror.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/codemirror/monokai.css') }}">
+{% endblock %}

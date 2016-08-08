@@ -1,0 +1,453 @@
+<div class="">
+<div class="" ng-controller="ElementTypeFormController">
+<h2>
+    Element type
+    <a md-button="" class="md-primary md-raised" ng-click="save()">Save</a>
+    <a md-button="" class="md-warn" ng-click="remove()" ng-if="elementType.id">Remove</a>
+</h2>
+<md-tabs md-dynamic-height md-border-bottom ng-if="elementType">
+<md-tab>
+    <md-tab-label>
+        Parameters
+    </md-tab-label>
+    <md-tab-body>
+        <div class="parameters-form-wrapper">
+            <md-content>
+                <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center" layout="row">
+                    <md-input-container flex="">
+                        <label>Type machine name</label>
+                        <input type="text" ng-model="elementType.machineName" ng-model-options="{getterSetter:true}"/>
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Type name</label>
+                        <input type="text" ng-model="elementType.name" ng-model-options="{getterSetter:true}"/>
+                    </md-input-container>
+                    <div flex="">
+                        <md-select ng-model="elementType.role" ng-model-options="{ getterSetter: true }"
+                                   placeholder="Element role" flex="">
+                            <md-option ng-value="role.value" ng-repeat="role in elementRole">
+                                {{role.label}}
+                            </md-option>
+                        </md-select>
+                    </div>
+                </md-whiteframe>
+                <md-whiteframe ng-if="elementType.machineName()" class="md-whiteframe-z2" layout="column">
+                    <h3>Previews: </h3>
+                    <input type="file" nv-file-select="" uploader="uploader" multiple/>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th width="50%">Name</th>
+                            <th ng-show="uploader.isHTML5">Size</th>
+                            <th ng-show="uploader.isHTML5">Progress</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(id,item) in elementType.previews()">
+                            <td>
+                                <div><strong>{{ item }}</strong></div>
+                                <img ng-src="{{ item }}" height="50">
+                            </td>
+                            <td ng-show="uploader.isHTML5" nowrap></td>
+                            <td ng-show="uploader.isHTML5"></td>
+                            <td class="text-center"></td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="removePreview(id)">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="item in uploader.queue">
+                            <td>
+                                <strong>{{ item.file.name }}</strong>
+
+                                <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 50 }"></div>
+                            </td>
+                            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                            <td ng-show="uploader.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar"
+                                         ng-style="{ 'width': item.progress + '%' }"></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                            </td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
+                                        ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()"
+                                        ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <div>
+                            <div>
+                                Queue progress:
+                                <div class="progress" style="">
+                                    <div class="progress-bar" role="progressbar"
+                                         ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()"
+                                    ng-disabled="!uploader.getNotUploadedItems().length">
+                                <span class="glyphicon glyphicon-upload"></span> Upload all
+                            </button>
+                            <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()"
+                                    ng-disabled="!uploader.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                            </button>
+                            <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()"
+                                    ng-disabled="!uploader.queue.length">
+                                <span class="glyphicon glyphicon-trash"></span> Remove all
+                            </button>
+                        </div>
+                    </table>
+                </md-whiteframe>
+                <md-list>
+                    <md-list-item class="md-3-line"
+                                  ng-repeat="(key,parameter) in elementType.getParameters()">
+                        <div class="md-list-item-text">
+                            <span>{{ parameter.machineName }}</span>: <span>{{ parameter.label }}</span>
+                            //(<span>{{ parameter.type }}</span>:<span>{{ parameter.defaultValue }}</span>)
+                            <div class="pull-right">
+                                <a ng-click="editParameter($event, key, parameter)" href="#"><i
+                                        class="glyphicon glyphicon-pencil"></i></a>
+                                <a ng-click="removeParameter(key)" href="#"><i
+                                        class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+                <button md-button ng-click="addParameter($event)" type="button"
+                        class="fab-default pull-right md-fab md-raised add-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+            </md-content>
+        </div>
+        <div class="algorithm-wrapper" ng-if="elementType.getAlgorithms()"
+             test="{{ elementType.getAlgorithms().start }}">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab ng-repeat="(key,algorithm) in elementType.getAlgorithms()">
+                    <md-tab-label>
+                        {{ key }}
+                    </md-tab-label>
+                    <md-tab-body>
+                        <md-whiteframe>
+                            <h3>You can use:</h3>
+
+                            <div>
+                                <span class="indigo b">param</span>([<span
+                                    ng-repeat="param in elementType.getParameters()">{{ param.machineName }}|</span>]);
+                                <span class="tile">// For getting parameter</span>
+                            </div>
+                            <div><span class="indigo b">stage</span>('variableName', ['variableValue']);
+                                <span class="tile">// For getting\setting value. Value will be saved across emulation process and shown for other elements.</span>
+                            </div>
+                            <div><span class="indigo b">custom</span>('variableName', ['variableValue']);
+                                <span class="tile">// For getting\setting value. Value will be saved across emulation process.</span>
+                            </div>
+                            <div><span class="indigo b">tmp</span>('variableName', ['variableValue']);
+                                <span class="tile">// For getting\setting value. Value will be removed on next emulation action.</span>
+                            </div>
+                            <div><span class="indigo b">port</span>('port', 'paramName'[, 'data'])
+                                <span class="tile">// For getting\setting parameter from port.
+                                    The <b>"stage"</b> is global for all ports and <b>"port"</b> particular for port.</span>
+                            </div>
+                            <div><span class="indigo b">view</span>('detailName'[<span ng-repeat="detail in elementType.view('defaultView').details()">{{ detail }},</span>]|'full', ['move', 'show', 'hide'],
+                                ['parameters']);
+                                <span class="tile">// For moving\showing\hiding element or detail.</span>
+                                <table border="2">
+                                    <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Parameter</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td rowspan="2" class="b">move</td>
+                                        <td>side</td>
+                                        <td>&lt;string&gt;['right'|'left'|'top'|'bottom'] - side of moving</td>
+                                    </tr>
+                                    <tr>
+                                        <td>len</td>
+                                        <td>&lt;number&gt; - length of moveing path</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="b">fill</td>
+                                        <td class="b">color</td>
+                                        <td class="b">&lt;string&gt;['red'|'green'|'blue'|'#009688'|'#3F51B5'...] - color of fill</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="b">stroke</td>
+                                        <td class="b">color</td>
+                                        <td class="b">&lt;string&gt;['red'|'green'|'blue'|'#009688'|'#3F51B5'...] - color of fill</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </md-whiteframe>
+                        <textarea ui-codemirror ng-model="elementType.getAlgorithms()[key]"
+                                  ui-codemirror-opts="{{ codeMirrorOptions }}"></textarea>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </div>
+    </md-tab-body>
+</md-tab>
+<md-tab>
+<md-tab-label>View settings</md-tab-label>
+<md-tab-body>
+<div layout="row" ng-if="!addViewForm">
+    <a class="md-raised md-primary" href="#" md-button="" ng-click="addViewFormShow()">Add view</a>
+</div>
+<form layout="row" ng-if="addViewForm">
+    <md-input-container flex="40">
+        <label>View ID:</label>
+        <input ng-model="newView.name" ng-model-options="{ getterSetter: true }"/>
+    </md-input-container>
+    <md-input-container flex="40">
+        <label>View name:</label>
+        <input ng-model="newView.label" ng-model-options="{ getterSetter: true }"/>
+    </md-input-container>
+    <button flex="10" md-button="" ng-click="addView()">Add view</button>
+</form>
+<md-tabs>
+<md-tab ng-repeat="view in elementType.getViews()">
+<md-tab-label>
+    {{ view.label() }}
+</md-tab-label>
+<md-tab-body>
+<form>
+<div class="element-preview" layout="row">
+    <div flex>
+        <view-editor newActivePoint="newActivePoint" newPort="newPort"
+                     select-element="elementsSelectViews"
+                     style="background: url('/bundles/home/img/circuit_grid.png') repeat; border: solid 1px #999;"
+                     view="view" select="true"></view-editor>
+        <md-button class="md-raised"
+                   ng-class="{'md-warn': view.showSize, 'md-primary': !view.showSize}"
+                   ng-click="toggleSize(view)">
+            Show size
+        </md-button>
+        <md-button class="md-raised"
+                   ng-class="{'md-warn': elementsSelectViews, 'md-primary': !elementsSelectViews}"
+                   ng-click="selectViewParts(view)"
+                >
+            Select elements
+        </md-button>
+        <div class="" ng-if="elementsSelectViews">
+            <md-input-container>
+                <label>View elements name</label>
+                <input ng-model="view.newElementsViewName"/>
+            </md-input-container>
+            <a href="#" md-button="" ng-click="setSelectionsName(view)" class="md-primary">
+                Save elements</a>
+        </div>
+        <div ng-if="view.showSize">
+            <md-input-container>
+                <label>Height:</label>
+                <input ng-model="view.height" ng-model-options="{ getterSetter: true }"/>
+            </md-input-container>
+            <md-input-container>
+                <label>Width:</label>
+                <input ng-model="view.width" ng-model-options="{ getterSetter: true }"/>
+            </md-input-container>
+            <md-input-container>
+                <label>X:</label>
+                <input ng-model="view.x" ng-model-options="{ getterSetter: true }"/>
+            </md-input-container>
+            <md-input-container>
+                <label>Y:</label>
+                <input ng-model="view.y" ng-model-options="{ getterSetter: true }"/>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="" flex="">
+        <md-input-container>
+            <label>Name:</label>
+            <input ng-model="view.name" readonly ng-model-options="{ getterSetter: true }"/>
+        </md-input-container>
+        <md-input-container>
+            <label>Label:</label>
+            <input ng-model="view.label" ng-model-options="{ getterSetter: true }"/>
+        </md-input-container>
+        <md-input-container>
+            <label>Shortcut:</label>
+            <input ng-model="view.shortCut" ng-model-options="{ getterSetter: true }"/>
+        </md-input-container>
+        <md-input-container>
+            <label>Shortcut position x:</label>
+            <input ng-model="view.shortCutX" ng-model-options="{ getterSetter: true }"/>
+        </md-input-container>
+        <md-input-container>
+            <label>Shortcut position y:</label>
+            <input ng-model="view.shortCutY" ng-model-options="{ getterSetter: true }"/>
+        </md-input-container>
+        <div>
+            <input type="file" nv-file-select="" uploader="view.uploader" multiple/>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th ng-show="view.uploader.isHTML5">Progress</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(id,item) in view.images()">
+                    <td style="max-width: 120px">
+                        <div style="word-break: break-all;width: 120px;"><strong>{{ item }}</strong></div>
+                        <img ng-src="{{ item }}" height="50">
+                    </td>
+                    <td ng-show="uploader.isHTML5"></td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-primary btn-xs"
+                                title="Select"
+                                ng-click="view.selectImage(id)">
+                            <span class="glyphicon glyphicon-screenshot"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                ng-click="removeViewImage(view, id)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in view.uploader.queue">
+                    <td style="max-width: 120px">
+                        <div style="word-break: break-all;width: 120px;">
+                            <strong>{{ item.file.name }}</strong></div>
+
+                        <div ng-show="view.uploader.isHTML5"
+                             ng-thumb="{ file: item._file, height: 50 }"></div>
+                    </td>
+                    <td ng-show="view.uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar"
+                                 ng-style="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-success btn-xs"
+                                ng-click="item.upload()"
+                                ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs"
+                                ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                ng-click="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ports-list" flex="">
+        <h2>
+            Ports:
+        </h2>
+
+        <div ng-repeat="(id,port) in view.ports()">
+            <div layout="row">
+                <div flex="30">
+                    <label>Port:</label>
+                    {{ port.id() }}
+                    <a href="#" md-button="" class="md-warn" ng-click="removePort(id, view)"><i
+                            class="glyphicon glyphicon-trash"></i></a>
+                </div>
+                <md-select ng-model="port.dir" ng-model-options="{ getterSetter: true }" placeholder="Direction"
+                           flex="">
+                    <md-option ng-value="dir.value" ng-repeat="dir in portDir">{{dir.label}}
+                    </md-option>
+                </md-select>
+                <md-select ng-model="port.role" ng-model-options="{ getterSetter: true }" placeholder="Role" flex="">
+                    <md-option ng-value="role.value" ng-repeat="role in portRole">
+                        {{role.label}}
+                    </md-option>
+                </md-select>
+            </div>
+            <div layout="row">
+                <div flex="30">
+                </div>
+                <md-input-container flex="">
+                    <label>x:</label>
+                    <input type="text" ng-model-options="{getterSetter: true}"
+                           ng-model="port.x">
+                </md-input-container>
+                <md-input-container flex="">
+                    <label>y:</label>
+                    <input type="text" ng-model-options="{getterSetter: true}"
+                           ng-model="port.y">
+                </md-input-container>
+            </div>
+        </div>
+        <md-input-container ng-if="newPort">
+            <label>Identifier:</label>
+            <input type="text" ng-model="newPort.id" ng-model-options="{ getterSetter: true }"/>
+        </md-input-container>
+        <button md-button="" ng-click="addPort()">Add port</button>
+    </div>
+</div>
+<div class="active-points-list">
+    <h2>
+        Active points:
+    </h2>
+
+    <div ng-repeat="(id,point) in view.activePoints()">
+        <div layout="row">
+            <div>
+                <label>Point:</label>
+                {{ point.id() }}
+            </div>
+            <md-input-container flex="">
+                <label>x:</label>
+                <input type="text" ng-model-options="{getterSetter: true}" ng-model="point.x">
+            </md-input-container>
+            <md-input-container flex="">
+                <label>y:</label>
+                <input type="text" ng-model-options="{getterSetter: true}" ng-model="point.y">
+            </md-input-container>
+            <div flex="">
+                <a href="#" md-button="" class="md-warn" ng-click="removeActivePoint(id, view)"><i
+                        class="glyphicon glyphicon-trash"></i></a>
+            </div>
+        </div>
+        <textarea ui-codemirror ng-model-options="{getterSetter: true}"
+                  ng-model="point.callback"
+                  ui-codemirror-opts="{{ codeMirrorOptions }}"></textarea>
+    </div>
+    <md-input-container ng-if="newActivePoint">
+        <label>Identifier:</label>
+        <input type="text" ng-model="newActivePoint.id"
+               ng-model-options="{ getterSetter: true }"/>
+    </md-input-container>
+    <button md-button="" ng-click="addActivePoint()">Add active point</button>
+</div>
+</form>
+</md-tab-body>
+</md-tab>
+</md-tabs>
+</md-tab-body>
+</md-tab>
+</md-tabs>
+</div>
+</div>

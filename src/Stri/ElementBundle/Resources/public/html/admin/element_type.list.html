@@ -1,0 +1,20 @@
+<div ng-controller="ElementTypeListController">
+    <h2>
+        Element types
+        <a href="/admin/element_type/new" md-button="" class="md-primary">
+            Add new
+        </a>
+    </h2>
+    <md-list>
+        <md-list-item ng-repeat="type in elementTypes" class="md-3-line">
+            <img ng-src="{{ type.view('defaultView').image() }}" class="md-avatar" />
+            <div class="md-list-item-text">
+                <h3>{{ type.name() }}</h3>
+                <div class="actions">
+                    <a href="/admin/element_type/{{ type.name() }}" md-button class="md-primary md-raised">Edit</a>
+                    <a href="/admin/element_type/{{ type.name() }}/delete" md-button class="md-warn md-raised">Delete</a>
+                </div>
+            </div>
+        </md-list-item>
+    </md-list>
+</div>

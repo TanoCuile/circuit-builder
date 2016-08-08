@@ -1,0 +1,104 @@
+{
+    "circuitType": "base",
+    "parameters": {},
+    "author": 1,
+    "name": "Test scheme",
+    "description": "Lorem ipsum dolor sit amet comin solor.",
+    "elements": [
+        {
+            "position": {
+                "x": 200,
+                "y": 200
+            },
+            "viewData": {
+                "shortCut": {
+                    "title": "K",
+                    "position": {
+                        "x": -5,
+                        "y": -5
+                    }
+                }
+            },
+            "ports": {
+                "b": {
+                    "id": "t",
+                    "config": "b"
+                },
+                "e": {
+                    "id": "l",
+                    "config": "b"
+                }
+            },
+            "activePoints": {
+                "a": {
+                    "config": "a"
+                },
+                "c": {
+                    "config": "c"
+                }
+            },
+            "modelData": {
+
+            },
+            "stage": {
+                "a": 10,
+                "b": 230
+            },
+            "parameters": {
+                "p": 10,
+                "v": 15
+            },
+            "elementType": "test",
+            "currentView": "defaultView"
+        },
+        {
+            "position": {
+                "x": 10,
+                "y": 10
+            },
+            "viewData": {
+                "shortCut": {
+                    "title": "K",
+                    "position": {
+                        "x": -5,
+                        "y": -5
+                    }
+                }
+            },
+            "ports": {
+                "b": {
+                    "id": "ui",
+                    "config": "b"
+                },
+                "e": {
+                    "id": "tw",
+                    "config": "b"
+                }
+            },
+            "activePoints": {
+                "a": {
+                    "config": "a"
+                },
+                "c": {
+                    "config": "c"
+                }
+            },
+            "modelData": {
+
+            },
+            "stage": {
+                "a": 10,
+                "b": 230
+            },
+            "parameters": {
+                "p": 10,
+                "v": 15
+            },
+            "elementType": "test",
+            "currentView": "defaultView"
+        }
+    ],
+    "connections": [
+    ],
+    "views": []
+}

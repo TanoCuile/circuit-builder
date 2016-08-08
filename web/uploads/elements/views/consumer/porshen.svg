@@ -1,0 +1,10 @@
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="100%" height="100%">
+    <g>
+        <path d="m 1,28 5.71428,0 0,-25.64286 -5.71428,0 z" fill="none" stroke="#000" stroke-width="2" detail-name="porshen"></path>
+        <path d="m 58,17 0,11.81642 -61.25,0 0,-28.03571 61.25,0 0,11.79987" stroke="#000" fill="none" stroke-width="2" detail-name="base"></path>
+        <path d="m 71,12 -64.10714,0 0,4.46429 64.10714,0" fill="none" stroke="#000" stroke-width="2" detail-name="porshen"></path>
+        <path d="m 1,0 0,28" stroke="#000" stroke-width="2"></path>
+        <path d="m 1,28 0,5" fill="none" stroke="#000" stroke-width="2"></path>
+        <path d="m 56,28 0,5" fill="none" stroke="#000" stroke-width="2"></path>
+    </g>
+</svg>

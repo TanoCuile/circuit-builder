@@ -1,0 +1,6 @@
+<div layout="column">
+    <div ng-repeat="item in list">
+        <a ng-if="item.reload" target="_self" href="{{ item.link }}" md-button="" class="{{ item.class }}">{{ item.name }}</a>
+        <a ng-if="!item.reload" href="{{ item.link }}" md-button="" class="{{ item.class }}">{{ item.name }}</a>
+    </div>
+</div>

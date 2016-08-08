@@ -1,0 +1,9 @@
+(function () {
+    if (!window.CircuitData) {
+        window.CircuitData = {};
+    }
+    if (!CircuitData.ElementTypes) {
+        CircuitData.ElementTypes = {};
+    }
+    CircuitData.ElementTypes[{{ type.machineName }}] = {{ type|json_encode|raw }};
+})();

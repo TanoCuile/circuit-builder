@@ -1,0 +1,52 @@
+{
+    "test": {
+        "defaultParameters": {
+            "p": 10,
+            "v": 15
+        },
+        "algorithm": {
+            "tick": "function(){console.log('Tick');}",
+            "click": "function(){console.log('Click');}",
+            "start": "function(){console.log('Start');}"
+        },
+        "views": {
+            "defaultView": {
+                "image": "/uploads/elements/diod.svg",
+                "size": {
+                    "width": 50,
+                    "height": 40
+                },
+                "activePoints": {
+                    "a": {
+                        "x": 1,
+                        "y": 13,
+                        "r": 3,
+                        "dir": "left",
+                        "callback": "console.log('MASTER', stage)"
+                    },
+                    "c": {
+                        "x": 40,
+                        "y": 13,
+                        "r": 3,
+                        "dir": "right",
+                        "callback": "console.log('MASTER', stage)"
+                    }
+                },
+                "ports": {
+                    "b": {
+                        "x": 19,
+                        "y": 23,
+                        "dir": "left",
+                        "r": 3
+                    },
+                    "e": {
+                        "x": 29,
+                        "y": 23,
+                        "dir": "right",
+                        "r": 3
+                    }
+                }
+            }
+        }
+    }
+}

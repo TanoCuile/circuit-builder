@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+
+  <path d="M 43,11 L 0,11" stroke-width="2" stroke="#000" />
+  <path d="M 36,3 A 53,53 0 0 1 7,3" fill="none" stroke-width="2" stroke="#000" />
+  <path d="M 36,19 A 53,53 0 0 0 7,19" fill="none" stroke-width="2" stroke="#000" />
+</svg>

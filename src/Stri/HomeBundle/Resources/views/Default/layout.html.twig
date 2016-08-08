@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html {% block html_attributes %}ng-app="app"{% endblock %} ng-controller="PageController">
+<head>
+    <meta charset="UTF-8"/>
+    <title ng-bind="pageData.title">{% block title %}Circuit{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/angular/select/select.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/bootstrap/css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/bootstrap/css/theme.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/d3/context_menu/css/d3-context-menu.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/angular/material/angular-material.css') }}" />
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/lib/bootstrap/css/theme.css') }}">#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/home/css/style.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <meta name="viewport" content="initial-scale=1" />
+    <base href="/">
+</head>
+<body {% block body_attributes %}ng-app="app" {% endblock %} layout="column">
+{% block header %}
+    <section id="header">
+        <div id="logo-line"></div>
+        <div id="main-menu-line">
+            <md-toolbar layout="row">
+                <button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button menuBtn">
+                    <span class="md-visually-hidden">Menu</span>
+                </button>
+                <h1 class="md-toolbar-tools" layout-align-gt-sm="center" ng-bind="pageData.title"></h1>
+            </md-toolbar>
+        </div>
+    </section>
+{% endblock %}
+<div layout="row" flex>
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+            {% block side_column %}
+                <div ng-controller="LeftSidebarController">
+                    <main-menu list="list"></main-menu>
+                </div>
+            {% endblock %}
+        </md-sidenav>
+    <div layout="column" flex id="content">
+        <md-content layout="column" flex class="md-padding">
+            <div ng-view>
+                {% block body %}
+                    404. and you browser has disable js
+                {% endblock %}
+            </div>
+        </md-content>
+    </div>
+</div>
+{% block footer %}
+    <section id="footer">
+        Stri Master
+    </section>
+{% endblock %}
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular-route.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular-resource.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular-sanitize.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular-touch.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular-animate.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/angular-aria.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/material/angular-material.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/recursion/angular-recursion.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/drag/ngDraggable.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/uploader/angular-file-upload.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/validation/tv4.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/object_path/ObjectPath.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/form/schema-form.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/js/form/md-decorator.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/recursion/angular-recursion.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/select/select.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/angular/ui-bootstrap-tpls-0.12.1.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/d3/d3.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/d3/context_menu/js/d3-context-menu.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/user/js/app/user.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/element/js/app/element_type.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/element/js/app/element.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/element/js/app/connection.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/circuit/js/app/circuit_emulator.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/circuit/js/app/circuit_emulation_view.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/circuit/js/app/circuit_engine.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/circuit/js/app/circuit.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/highcharts/standalone-framework.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/highcharts/highcharts.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bundles/home/lib/highcharts/gray.js') }}"></script>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

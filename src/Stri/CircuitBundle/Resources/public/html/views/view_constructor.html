@@ -1,0 +1,55 @@
+<md-dialog aria-label="View constructor">
+    <md-dialog-content class="sticky-container">
+        <md-input-container>
+            <md-select placeholder="View type"
+                       ng-model="config.type">
+                <md-option value="{{ type }}" ng-repeat="type in types">{{ type }}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Property:</label>
+            <input type="text" ng-model="config.properties.property" />
+        </md-input-container>
+        <md-input-container>
+            <label>Label:</label>
+            <input type="text" ng-model="config.properties.label" />
+        </md-input-container>
+        <div ng-if="config.type == 'binary'">
+            <md-input-container>
+                <label>Level:</label>
+                <input type="text" ng-model="config.properties.level" />
+            </md-input-container>
+            <md-input-container>
+                <md-select placeholder="Rule"
+                           ng-model="config.properties.rule">
+                    <md-option value="<">&lt;</md-option>
+                    <md-option value="<=">&lt;=</md-option>
+                    <md-option value=">">&gt;</md-option>
+                    <md-option value=">=">&gt;></md-option>
+                    <md-option value="=">=</md-option>
+                    <md-option value="callback">callback</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container ng-if="config.properties.rule == 'callback'">
+                <label>Rule callback</label>
+                <textarea ui-codemirror ng-model="config.properties.ruleCallback"
+                          ui-codemirror-opts="{{ codeMirrorOptions }}"></textarea>
+            </md-input-container>
+        </div>
+        <div ng-if="config.type == 'chart'">
+            <md-input-container>
+                <label>Transform callback</label>
+                <textarea ui-codemirror ng-model="config.properties.transformCallback"
+                          ui-codemirror-opts="{{ codeMirrorOptions }}"></textarea>
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <md-button ng-click="cancel(config)" class="md-primary">
+            Cancel
+        </md-button>
+        <md-button ng-click="add(config)" class="md-primary">
+            Save
+        </md-button>
+    </div>
+</md-dialog>

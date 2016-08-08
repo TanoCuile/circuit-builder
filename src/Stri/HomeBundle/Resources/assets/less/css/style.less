@@ -1,0 +1,103 @@
+@color-teal: #009688;
+@color-indigo: #3F51B5;
+@color-teal-inverted: #fff;
+@color-indigo-inverted: #fff;
+
+.bg-tile {
+  background-color: @color-teal!important;
+  color: @color-teal-inverted!important;
+}
+.bg-tile:hover,
+.bg-tile:active {
+  background-color: lighten(@color-teal, 10%)!important;
+}
+
+.bg-indigo {
+  background-color: @color-indigo!important;
+  color: @color-indigo-inverted!important;
+}
+
+.bg-indigo:hover,
+.bg-indigo:active {
+  background-color: lighten(@color-indigo, 10%)!important;
+}
+
+.tile {
+  color: @color-teal;
+}
+
+.indigo {
+  color: @color-indigo;
+}
+
+.b {
+  font-weight: bold;
+}
+
+sf-decorator {
+  display: block;
+}
+
+.list-group-item  button.close {
+  position: absolute!important;
+  right: 10px;
+}
+
+.schema-form-array .add-button {
+  line-height: 40px;
+  position: relative;
+  top: -40px;
+  width: 40px;
+  height: 40px;
+}
+
+
+// Circuit elements
+.activePoint {
+  fill: rgba(230, 90, 190, 0.9);
+}
+.activePointField {
+  fill: rgba(230, 90, 190, 0.3);
+  visibility:hidden;
+}
+.onDrag .activePointField,
+.activePoint-container:hover .activePointField {
+  visibility:visible;
+}
+.port {
+  fill: rgba(150, 90, 230, 0.9);
+}
+.portField {
+  fill: rgba(150, 90, 230, 0.5);
+  visibility:hidden;
+}
+.onDrag .portField,
+.port-container:hover .portField {
+  visibility:visible;
+}
+
+.connections line {
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+line.vertical {
+  cursor: col-resize;
+}
+line.horizontal {
+  cursor: row-resize;
+}
+
+rect.selection {
+  stroke: #000;
+  stroke-width: 2px;
+  fill: none;
+}
+
+path, line, rect {
+  stroke: #000;
+}
+
+path[selected], line[selected], rect[selected] {
+  stroke: #f44;
+}

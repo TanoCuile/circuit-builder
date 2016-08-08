@@ -1,0 +1,16 @@
+<div class="" ng-controller="CircuitListController">
+    <div>
+        <h2>
+            Public circuits
+        </h2>
+        <a href="circuits/new">Create new</a>
+    </div>
+    <md-list>
+        <md-list-item ng-repeat="circuit in list" class="md-3-line">
+            <h3>{{ circuit.name }}</h3>
+            <div class="actions">
+                <a href="/circuits/{{ circuit.id }}" md-button="" class="md-primary md-raised">Edit</a>
+            </div>
+        </md-list-item>
+    </md-list>
+</div>

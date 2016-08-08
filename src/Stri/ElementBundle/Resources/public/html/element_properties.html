@@ -1,0 +1,31 @@
+<md-dialog aria-label="Parameters configuration">
+    <md-dialog-content class="sticky-container">
+        <md-subheader class="md-sticky-no-effect">Parameters data {{ element.name() }}</md-subheader>
+        <md-input-container ng-repeat="parameter in element.parametersConfig()">
+            <div ng-if="parameter.type == 'text'">
+                <label>{{ parameter.label }}</label>
+                <input  type="text"
+                        class="md-input" ng-model="element.parameters()[parameter.machineName]">
+            </div>
+            <div ng-if="parameter.type == 'checkbox'">
+                <md-checkbox aria-label="{{ parameter.label }}" ng-model="element.parameters()[parameter.machineName]">
+                    {{ parameter.label }}
+                </md-checkbox>
+            </div>
+            <div ng-if="['checkboxes', 'select'].indexOf(parameter.type) >= 0">
+                <md-select placeholder="{{ parameter.label }}"
+                           ng-model="element.parameters()[parameter.machineName]"
+                           multiple="['checkboxes'].indexOf(parameter.type) >= 0">
+                    <md-option value="{{ type.key }}" ng-repeat="type in parameter.options">{{ type.label }}</md-option>
+                </md-select>
+            </div>
+
+        </md-input-container>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="save(element)" class="md-primary">
+            Save
+        </md-button>
+    </div>
+</md-dialog>
